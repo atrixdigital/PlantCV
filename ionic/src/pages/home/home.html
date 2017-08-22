@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar color="twitter">
+    <ion-title>
+      Sensor
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding-top >
+
+
+<ion-grid>
+  <ion-row>
+   
+    <ion-col xl>
+    
+     <img src="assets/img/home.jpg" style="width:100%">
+    
+    </ion-col>
+   
+  </ion-row>
+</ion-grid>
+
+
+
+
+<ion-list padding>
+
+
+
+  <ion-item>
+    <ion-avatar item-start>
+    <img src="assets/img/temperature.png">
+    </ion-avatar>
+    <ion-label floating>Temperature</ion-label>
+    <ion-input type="number"  min="0" max="50"  #temp></ion-input>
+  </ion-item>
+
+  
+  
+
+  <ion-item>
+     <ion-avatar item-start>
+      <img src="assets/img/ph.png"></ion-avatar>
+    <ion-label floating>pH</ion-label>
+    <ion-input type="number" min="0" max="14" #ph></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-avatar item-start>
+     <img src="assets/img/sunlight.png"></ion-avatar>
+    <ion-label>Sunlight</ion-label>
+    <ion-select #sunlight>
+      <ion-option value="high">High</ion-option>
+      <ion-option value="low">low</ion-option>
+      <ion-option value="normal">normal</ion-option>
+      </ion-select>
+  </ion-item>
+
+
+ <ion-item>
+  <ion-avatar item-start>
+    <img src="assets/img/moisture.png"> </ion-avatar>
+    <ion-label>Moisture</ion-label>
+    <ion-select #moisture>
+      <ion-option value="dry+">Dry +</ion-option>
+      <ion-option value="dry-">Dry -</ion-option>
+      <ion-option value="wet+">Wet +</ion-option>
+      <ion-option value="wet-">Wet -</ion-option>
+      </ion-select>
+  </ion-item>
+
+
+  
+
+</ion-list>  
+
+<div padding>
+  <button color="secondary" ion-button full (click) = "submit()">submit</button>
+</div>
+
+
+  
+
+</ion-content>
+
+
