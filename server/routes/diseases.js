@@ -34,6 +34,7 @@ let y;
 // });
 
 
+
 router.post('/', (req,res)=>{
   //let resp=  Disease.check(req.body);
  /// req.body.name == will cotain name of crop

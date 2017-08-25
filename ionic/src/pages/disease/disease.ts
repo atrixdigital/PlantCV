@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import { Observable} from 'rxjs'
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 
 // import {Http} from '@angular/http';
@@ -21,7 +22,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
   templateUrl: 'disease.html',
 })
 export class DiseasePage {
-   constructor(private db: AngularFireDatabase,
+   constructor(private db: AngularFireDatabase,private androidPermissions: AndroidPermissions,
     public navCtrl: NavController,private camera: Camera,private http:Http, private alertCtrl: AlertController) {}
   
   @ViewChild('name') name;
@@ -33,6 +34,10 @@ export class DiseasePage {
   // 922428CF
   ionViewDidLoad() {
     console.log('ionViewDidLoad DiseasePage');
+    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
+  success => console.log('Permission granted'),
+  err => this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA,this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE])
+);
   }
   public base64Image: string;
  sourceSelection;
@@ -80,7 +85,7 @@ setSpecial(){
   // let myHeaders = new Headers();
   //   myHeaders.append('Content-Type', 'application/json');    
   //      let options = new RequestOptions({ headers: myHeaders });
-  // this.http.post('https://atrixdigital1.fwd.wf/disease/special',data,options)
+  // this.http.post('https://plantcv.fwd.wf/disease/special',data,options)
   // .map(res=>res.json()).subscribe((data)=>{
   //   console.log(data.message);
   // },(err)=>{
@@ -113,7 +118,7 @@ onSubmit(){
    let myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');    
        let options = new RequestOptions({ headers: myHeaders });
-  this.http.post('https://atrixdigital1.fwd.wf/disease/',data,options)
+  this.http.post('https://plantcv.fwd.wf/disease/',data,options)
   .map(res=> res.json())
   .catch((error: Response | any)=>{
     console.log(error.message || error);
